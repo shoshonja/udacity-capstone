@@ -9,22 +9,35 @@
         android:id="@+id/welcomeFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_newsFeedFragment"
-            app:destination="@id/newsFeedFragment" />
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_parkMapFragment"
             app:destination="@id/parkMapFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_newsSourceFragment"
+            app:destination="@id/newsSourceFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFeedFragment"
-        android:name="com.bikes.greyp.udacitycapstoneproject.ui.newsfeed.NewsFeedFragment"
+        android:name="com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed.NewsFeedFragment"
         android:label="fragment_news_feed"
-        tools:layout="@layout/fragment_news_feed" />
+        tools:layout="@layout/fragment_news_feed">
+<!--        <argument-->
+<!--            android:name="rssSource"-->
+<!--            app:argType="RssSource" />-->
+    </fragment>
     <fragment
         android:id="@+id/parkMapFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.parkmap.ParkMapFragment"
         android:label="fragment_park_map"
         tools:layout="@layout/fragment_park_map" />
+    <fragment
+        android:id="@+id/newsSourceFragment"
+        android:name="com.bikes.greyp.udacitycapstoneproject.ui.news.source.NewsSourceFragment"
+        android:label="fragment_news_source"
+        tools:layout="@layout/fragment_news_source">
+        <action
+            android:id="@+id/action_newsSourceFragment_to_newsFeedFragment"
+            app:destination="@id/newsFeedFragment" />
+    </fragment>
 </navigation>

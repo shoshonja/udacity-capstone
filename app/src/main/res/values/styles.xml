@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonDefaultStyle">
+        <item name="android:backgroundTint">@color/gunmetal_grey</item>
+        <item name="android:layout_marginHorizontal">@dimen/fragment_welcome_side_margin</item>
+    </style>
+</resources>

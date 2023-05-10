@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.WelcomeFragment">
 
+    <ImageView
+        android:id="@+id/fragment_welcome_image_bike"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bike_background"
+        app:layout_constraintBottom_toTopOf="@id/fragment_welcome_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/fragment_welcome_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/fragment_welcome_side_margin"
+        android:text="@string/fragment_welcome_info"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/constraint_center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_welcome_image_bike" />
+
+    <Button
+        android:id="@+id/fragment_welcome_button_rss"
+        style="@style/ButtonDefaultStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_welcome_button_rss_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/constraint_center" />
+
+    <Button
+        android:id="@+id/fragment_welcome_button_maps"
+        style="@style/ButtonDefaultStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_welcome_button_maps_label"
+        app:layout_constraintTop_toBottomOf="@id/fragment_welcome_button_rss" />
+
+    <androidx.constraintlayout.widget.Constraints
+        android:id="@+id/constraint_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.news.source.NewsSourceFragment">
+
+    <ImageView
+        android:id="@+id/fragment_news_source_pb_logo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/banner_heignt"
+        android:background="@drawable/pinkbike_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/fragment_news_source_button_pb"
+        style="@style/ButtonDefaultStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_news_source_button_pb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_news_source_pb_logo" />
+
+    <ImageView
+        android:id="@+id/fragment_news_source_vt_logo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/banner_heignt"
+        android:background="@drawable/vital_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_news_source_pb_logo" />
+
+    <Button
+        android:id="@+id/fragment_news_source_button_vt"
+        style="@style/ButtonDefaultStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/framgnet_news_source_button_vt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_news_source_vt_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

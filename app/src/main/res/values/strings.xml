@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BikerApp!</string>
+    <!-- Feeds -->
+    <string name="feed_pinkbike">https://www.pinkbike.com/pinkbike_xml_feed.php</string>
+    <string name="feed_vital">http://feeds.vitalmtb.com/VitalMtbSpotlights</string>
+
+    <!--Welcome fragment -->
+    <string name="fragment_welcome_button_rss_label">See the news</string>
+    <string name="fragment_welcome_button_maps_label">See the best bike parks!</string>
+    <string name="fragment_welcome_info">Welcome to the Biker app! See what\'s new in the bike world or see where to ride next!</string>
+    <string name="fragment_news_source_button_pb">See what\'s new on Pinkbike</string>
+    <string name="framgnet_news_source_button_vt">See what\'s new on VitalMtb</string>
+
 </resources>
