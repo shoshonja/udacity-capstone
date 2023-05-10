@@ -64,12 +64,11 @@ dependencies {
     implementation "com.google.android.gms:play-services-maps:18.1.0"
 
     //Koin
-//    implementation "org.koin:koin-android:2.2.2"
-//    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
+    implementation "io.insert-koin:koin-core:3.4.0"
+    implementation "io.insert-koin:koin-android:3.4.0"
 
     //Coroutines Dependencies
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -8,17 +8,16 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bikes.greyp.udacitycapstoneproject.R
 import com.bikes.greyp.udacitycapstoneproject.data.models.RssSource
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentNewsSourceBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsSourceFragment : Fragment(), OnClickListener {
 
     lateinit var binding: FragmentNewsSourceBinding
-    lateinit var viewModel: NewsSourceViewModel
-    //TODO inject this
+    private val viewModel: NewsSourceViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +26,6 @@ class NewsSourceFragment : Fragment(), OnClickListener {
         binding = FragmentNewsSourceBinding.inflate(inflater, container, false)
         binding.fragmentNewsSourceButtonVt.setOnClickListener(this)
         binding.fragmentNewsSourceButtonPb.setOnClickListener(this)
-
-        //TODO remove this, constructor is not default, and this should be done via Koin
-        viewModel = ViewModelProvider(
-            this,
-            defaultViewModelProviderFactory
-        )[NewsSourceViewModel::class.java]
 
         setObservers()
 
