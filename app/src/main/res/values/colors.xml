@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="gunmetal_grey">#393939</color>
+
+    <color name="default_button_text_color">@color/white</color>
+    <color name="default_button_background_color">@color/gunmetal_grey</color>
 </resources>

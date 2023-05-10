@@ -40,7 +40,7 @@
         style="@style/ButtonDefaultStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/framgnet_news_source_button_vt"
+        android:text="@string/fragment_news_source_button_vt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_news_source_vt_logo" />

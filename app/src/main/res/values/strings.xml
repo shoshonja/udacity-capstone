@@ -8,7 +8,9 @@
     <string name="fragment_welcome_button_rss_label">See the news</string>
     <string name="fragment_welcome_button_maps_label">See the best bike parks!</string>
     <string name="fragment_welcome_info">Welcome to the Biker app! See what\'s new in the bike world or see where to ride next!</string>
+
     <string name="fragment_news_source_button_pb">See what\'s new on Pinkbike</string>
-    <string name="framgnet_news_source_button_vt">See what\'s new on VitalMtb</string>
+    <string name="fragment_news_source_button_vt">See what\'s new on VitalMtb</string>
+    <string name="fragment_news_source_error_connection">You need to be connected to the internet to view the news!</string>
 
 </resources>
