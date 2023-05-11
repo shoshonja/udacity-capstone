@@ -1,17 +1,21 @@
 package com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bikes.greyp.udacitycapstoneproject.data.models.PartialFeedItem
 import com.bikes.greyp.udacitycapstoneproject.data.models.RssSource
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentNewsFeedBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NewsFeedFragment : Fragment() {
 
@@ -42,7 +46,11 @@ class NewsFeedFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.retrievedRssFeeds.observe(viewLifecycleOwner, Observer { partialFeedItemList ->
-            adapter = NewsFeedAdapter(partialFeedItemList, rssSource)
+            adapter = NewsFeedAdapter(
+                partialFeedItemList,
+                rssSource,
+                createItemClickListener(partialFeedItemList)
+            )
             binding.fragmentNewsFeedRecyclerView.layoutManager =
                 LinearLayoutManager(requireContext())
             binding.fragmentNewsFeedRecyclerView.adapter = adapter
@@ -56,4 +64,12 @@ class NewsFeedFragment : Fragment() {
         }
     }
 
+    private fun createItemClickListener(partialFeedItemList: List<PartialFeedItem>): NewsFeedAdapter.ClickListener =
+        object : NewsFeedAdapter.ClickListener {
+            override fun onItemClick(position: Int) {
+                val browserIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(partialFeedItemList[position].link))
+                startActivity(browserIntent)
+            }
+        }
 }

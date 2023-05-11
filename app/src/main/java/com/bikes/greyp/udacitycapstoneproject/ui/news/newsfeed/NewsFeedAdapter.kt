@@ -2,6 +2,7 @@ package com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bikes.greyp.udacitycapstoneproject.data.models.PartialFeedItem
@@ -11,7 +12,8 @@ import com.bikes.greyp.udacitycapstoneproject.databinding.RecyclerViewItemBindin
 
 class NewsFeedAdapter(
     private val partialFeedItemList: List<PartialFeedItem>,
-    private val rssSource: RssSource
+    private val rssSource: RssSource,
+    private val clickListener: NewsFeedAdapter.ClickListener
 ) : RecyclerView.Adapter<NewsFeedAdapter.RssViewHolder>() {
 
     private lateinit var context: Context
@@ -47,9 +49,24 @@ class NewsFeedAdapter(
     }
 
     inner class RssViewHolder(private val binding: RecyclerViewItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         val textTitle = binding.recyclerItemTitle
         val textDescription = binding.recyclerItemDescription
         val textImage = binding.recyclerItemImage
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                clickListener.onItemClick(position)
+            }
+        }
+    }
+
+    interface ClickListener {
+        fun onItemClick(position: Int)
     }
 }
