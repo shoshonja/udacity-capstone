@@ -4,4 +4,7 @@
     <dimen name="fragment_news_feed_side_margin">16dp</dimen>
 
     <dimen name="banner_heignt">120dp</dimen>
+
+    <dimen name="max_image_size">150dp</dimen>
+
 </resources>
