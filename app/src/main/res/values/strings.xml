@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">BikerApp!</string>
-    <!-- Feeds -->
-    <string name="feed_pinkbike">https://www.pinkbike.com/pinkbike_xml_feed.php</string>
-    <string name="feed_vital">http://feeds.vitalmtb.com/VitalMtbSpotlights</string>
 
     <!--Welcome fragment -->
     <string name="fragment_welcome_button_rss_label">See the news</string>

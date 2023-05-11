@@ -21,7 +21,11 @@
         android:id="@+id/newsFeedFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed.NewsFeedFragment"
         android:label="fragment_news_feed"
-        tools:layout="@layout/fragment_news_feed"/>
+        tools:layout="@layout/fragment_news_feed" >
+        <argument
+            android:name="rssSource"
+            app:argType="com.bikes.greyp.udacitycapstoneproject.data.models.RssSource" />
+    </fragment>
     <fragment
         android:id="@+id/parkMapFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.parkmap.ParkMapFragment"
@@ -35,9 +39,6 @@
         <action
             android:id="@+id/action_newsSourceFragment_to_newsFeedFragment"
             app:destination="@id/newsFeedFragment">
-            <argument
-                android:name="rssSource"
-                app:argType="com.bikes.greyp.udacitycapstoneproject.data.models.RssSource" />
         </action>
     </fragment>
 </navigation>
