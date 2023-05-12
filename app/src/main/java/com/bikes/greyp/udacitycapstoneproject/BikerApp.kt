@@ -11,7 +11,8 @@ import com.bikes.greyp.udacitycapstoneproject.ui.parkmap.addridingspot.AddRiding
 import com.bikes.greyp.udacitycapstoneproject.usecases.CheckConnectionUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.GetFeedLocalUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.GetFeedRemoteUseCase
-import com.bikes.greyp.udacitycapstoneproject.usecases.GetRidingSpotsUseCase
+import com.bikes.greyp.udacitycapstoneproject.usecases.GetAllRidingSpotsUseCase
+import com.bikes.greyp.udacitycapstoneproject.usecases.GetRidingSpotUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.StoreFeedUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.StoreRidingSpotUseCase
 import com.bikes.greyp.udacitycapstoneproject.utils.Parser
@@ -30,7 +31,7 @@ class BikerApp : Application() {
                 NewsFeedViewModel(get())
             }
             viewModel {
-                ParkMapViewModel()
+                ParkMapViewModel(get())
             }
             viewModel{
                 AddRidingSpotViewModel(get())
@@ -42,14 +43,15 @@ class BikerApp : Application() {
             single { GetFeedLocalUseCase(get()) }
             single { GetFeedRemoteUseCase() }
             single { StoreFeedUseCase(get()) }
-            single { GetRidingSpotsUseCase(get()) }
+            single { GetAllRidingSpotsUseCase(get()) }
             single { StoreRidingSpotUseCase(get()) }
+            single { GetRidingSpotUseCase(get())}
         }
 
         val repositoryModule = module {
             single { RssRepository(get(), get(), get(), get(), get()) as Repository }
             single { LocalDatabase.getInstance(this@BikerApp).rssDao }
-            single { RidingSpotRepository(get(), get()) }
+            single { RidingSpotRepository(get(), get(), get()) }
             single { LocalDatabase.getInstance(this@BikerApp).ridingSpotDao }
         }
 

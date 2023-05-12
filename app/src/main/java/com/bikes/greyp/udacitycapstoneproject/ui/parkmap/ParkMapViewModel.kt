@@ -3,9 +3,12 @@ package com.bikes.greyp.udacitycapstoneproject.ui.parkmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bikes.greyp.udacitycapstoneproject.data.models.RidingSpot
+import com.bikes.greyp.udacitycapstoneproject.data.repository.RidingSpotRepository
+import kotlinx.coroutines.launch
 
-class ParkMapViewModel : ViewModel() {
+class ParkMapViewModel(private val ridingSpotRepository: RidingSpotRepository) : ViewModel() {
     val ridingSpots: LiveData<List<RidingSpot>>
         get() = _ridingSpots
 
@@ -13,6 +16,9 @@ class ParkMapViewModel : ViewModel() {
 
 
     fun getRidingSpots() {
+        viewModelScope.launch {
+            _ridingSpots.value = ridingSpotRepository.getAllRidingSpots()
+        }
 
         val leogang = RidingSpot(
             title = "Leogang",

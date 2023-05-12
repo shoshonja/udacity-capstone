@@ -14,4 +14,7 @@ interface RidingSpotDao {
 
     @Query("SELECT * FROM local_riding_spot_storage")
     fun getAllRidingSpots(): List<RidingSpot>
+
+    @Query("SELECT * FROM local_riding_spot_storage WHERE id = :spotId")
+    fun getRidingSpot(spotId: String): RidingSpot?
 }

@@ -18,6 +18,7 @@ import com.bikes.greyp.udacitycapstoneproject.R
 import com.bikes.greyp.udacitycapstoneproject.data.models.RidingSpot
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentParkMapBinding
 import com.bikes.greyp.udacitycapstoneproject.ui.base.BaseMapFragment
+import com.bikes.greyp.udacitycapstoneproject.utils.createGeofence
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -85,6 +86,7 @@ class ParkMapFragment : BaseMapFragment() {
             binding.fragmentParkRecycler.adapter = adapter
 
             for (ridingSpot in ridingSpotList) {
+                createGeofence(requireActivity(), ridingSpot)
                 googleMap.addMarker(
                     MarkerOptions().position(
                         LatLng(
@@ -111,7 +113,7 @@ class ParkMapFragment : BaseMapFragment() {
             }
         }
 
-    private fun handlePermissions(){
+    private fun handlePermissions() {
         if (allPermissionsGranted()) {
             enableMyLocation()
         } else {

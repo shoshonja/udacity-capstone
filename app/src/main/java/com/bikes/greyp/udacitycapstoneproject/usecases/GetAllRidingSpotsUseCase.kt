@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetRidingSpotsUseCase(
+class GetAllRidingSpotsUseCase(
     private val ridingSpotDao: RidingSpotDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {

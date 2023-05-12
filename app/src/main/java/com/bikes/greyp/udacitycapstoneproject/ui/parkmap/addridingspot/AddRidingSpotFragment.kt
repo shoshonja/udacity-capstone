@@ -39,7 +39,6 @@ class AddRidingSpotFragment : BaseMapFragment() {
 
 
     //TODO save instance state here
-    //TODO add progress bar while spot is saving
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
