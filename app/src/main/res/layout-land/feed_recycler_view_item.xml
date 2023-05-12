@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/recyclerItemImage"
+        android:id="@+id/feedRecyclerItemImage"
         android:layout_width="@dimen/max_image_size"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -13,20 +13,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recyclerItemTitle"
+        android:id="@+id/feedRecyclerItemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/recyclerItemImage"
-        app:layout_constraintTop_toTopOf="@id/recyclerItemImage" />
+        app:layout_constraintStart_toEndOf="@id/feedRecyclerItemImage"
+        app:layout_constraintTop_toTopOf="@id/feedRecyclerItemImage" />
 
     <TextView
-        android:id="@+id/recyclerItemDescription"
+        android:id="@+id/feedRecyclerItemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@id/recyclerItemImage"
-        app:layout_constraintTop_toBottomOf="@id/recyclerItemTitle" />
+        app:layout_constraintStart_toEndOf="@id/feedRecyclerItemImage"
+        app:layout_constraintTop_toBottomOf="@id/feedRecyclerItemTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

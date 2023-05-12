@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bikes.greyp.udacitycapstoneproject.R
+import com.bikes.greyp.udacitycapstoneproject.data.models.RidingSpot
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentParkMapBinding
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,6 +24,7 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
 
     lateinit var binding: FragmentParkMapBinding
+    lateinit var adapter: ParkMapAdapter
 
     private val viewModel: ParkMapViewModel by viewModel()
 
@@ -62,6 +66,10 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
 
     private fun setObservers() {
         viewModel.ridingSpots.observe(viewLifecycleOwner, Observer { ridingSpotList ->
+            adapter = ParkMapAdapter(ridingSpotList, createItemClickListener(ridingSpotList))
+            binding.fragmentParkRecycler.layoutManager = LinearLayoutManager(requireContext())
+            binding.fragmentParkRecycler.adapter = adapter
+
             for (ridingSpot in ridingSpotList) {
                 googleMap.addMarker(
                     MarkerOptions().position(
@@ -74,4 +82,18 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
             }
         })
     }
+
+    private fun createItemClickListener(ridingSpotList: List<RidingSpot>): ParkMapAdapter.ClickListener =
+        object : ParkMapAdapter.ClickListener {
+            override fun onItemClick(position: Int) {
+                googleMap.moveCamera(
+                    CameraUpdateFactory.newLatLng(
+                        LatLng(
+                            ridingSpotList[position].latitude,
+                            ridingSpotList[position].longitude
+                        )
+                    )
+                )
+            }
+        }
 }

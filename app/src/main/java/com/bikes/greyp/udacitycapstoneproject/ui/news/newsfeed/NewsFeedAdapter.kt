@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bikes.greyp.udacitycapstoneproject.data.models.PartialFeedItem
 import com.bikes.greyp.udacitycapstoneproject.data.models.RssSource
 import com.bikes.greyp.udacitycapstoneproject.data.network.RssImageLoader
-import com.bikes.greyp.udacitycapstoneproject.databinding.RecyclerViewItemBinding
+import com.bikes.greyp.udacitycapstoneproject.databinding.FeedRecyclerViewItemBinding
 
 class NewsFeedAdapter(
     private val partialFeedItemList: List<PartialFeedItem>,
     private val rssSource: RssSource,
-    private val clickListener: NewsFeedAdapter.ClickListener
+    private val clickListener: ClickListener
 ) : RecyclerView.Adapter<NewsFeedAdapter.RssViewHolder>() {
 
     private lateinit var context: Context
@@ -22,7 +22,7 @@ class NewsFeedAdapter(
         context = parent.context
         val layoutInflater = LayoutInflater.from(context)
 
-        val binding = RecyclerViewItemBinding.inflate(layoutInflater, parent, false)
+        val binding = FeedRecyclerViewItemBinding.inflate(layoutInflater, parent, false)
         return RssViewHolder(binding)
     }
 
@@ -48,11 +48,12 @@ class NewsFeedAdapter(
         return partialFeedItemList.size
     }
 
-    inner class RssViewHolder(private val binding: RecyclerViewItemBinding) :
+    inner class RssViewHolder(binding: FeedRecyclerViewItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-        val textTitle = binding.recyclerItemTitle
-        val textDescription = binding.recyclerItemDescription
-        val textImage = binding.recyclerItemImage
+
+        val textTitle = binding.feedRecyclerItemTitle
+        val textDescription = binding.feedRecyclerItemDescription
+        val textImage = binding.feedRecyclerItemImage
 
         init {
             itemView.setOnClickListener(this)

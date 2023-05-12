@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/fragment_news_source_pb_logo"
         android:layout_width="0dp"
-        android:layout_height="@dimen/banner_heignt"
+        android:layout_height="@dimen/fragment_news_source_banner_height"
         android:background="@drawable/pinkbike_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
     <ImageView
         android:id="@+id/fragment_news_source_vt_logo"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/banner_heignt"
+        android:layout_height="@dimen/fragment_news_source_banner_height"
         android:background="@drawable/vital_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
