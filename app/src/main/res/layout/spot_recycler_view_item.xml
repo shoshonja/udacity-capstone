@@ -8,7 +8,7 @@
         android:id="@+id/spotRecyclerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fragment_park_map_recycler_item_margin"
+        android:layout_marginTop="@dimen/view_spot_recycler_item_margin"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

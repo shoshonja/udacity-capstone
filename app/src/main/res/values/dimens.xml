@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fragment_welcome_side_margin">16dp</dimen>
-    <dimen name="fragment_news_feed_side_margin">16dp</dimen>
 
-    <dimen name="fragment_park_map_side_margin">16dp</dimen>
-    <dimen name="fragment_park_map_recycler_item_margin">4dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+
+
+    <dimen name="fragment_welcome_side_margin">@dimen/margin_large</dimen>
+    <dimen name="fragment_news_feed_side_margin">@dimen/margin_large</dimen>
+
+    <dimen name="fragment_park_map_side_margin">@dimen/margin_large</dimen>
     <dimen name="fragment_park_map_recycler_height">250dp</dimen>
 
     <dimen name="fragment_news_source_banner_height">120dp</dimen>
+
+    <dimen name="view_feed_recycler_item_image_margin">@dimen/margin_medium</dimen>
+    <dimen name="view_feed_recycler_item_title_margin">@dimen/margin_small</dimen>
+    <dimen name="view_feed_recycler_item_description_margin">@dimen/margin_small</dimen>
+
+    <dimen name="view_spot_recycler_item_margin">@dimen/margin_small</dimen>
 
     <dimen name="max_image_size">150dp</dimen>
 
