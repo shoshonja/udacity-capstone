@@ -1,64 +1,42 @@
 package com.bikes.greyp.udacitycapstoneproject.ui.parkmap
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
+import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bikes.greyp.udacitycapstoneproject.BuildConfig
 import com.bikes.greyp.udacitycapstoneproject.R
 import com.bikes.greyp.udacitycapstoneproject.data.models.RidingSpot
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentParkMapBinding
+import com.bikes.greyp.udacitycapstoneproject.ui.base.BaseMapFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ParkMapFragment : Fragment(), OnMapReadyCallback {
+class ParkMapFragment : BaseMapFragment() {
 
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
+    private lateinit var adapter: ParkMapAdapter
 
     lateinit var binding: FragmentParkMapBinding
-    lateinit var adapter: ParkMapAdapter
 
     private val viewModel: ParkMapViewModel by viewModel()
-
-    private val neededPermissions: Array<String> = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_BACKGROUND_LOCATION
-    )
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            var areAllPermissionsGranted = true
-            permissions.entries.forEach { entry ->
-                val isGranted = entry.value
-                if (!isGranted) {
-                    areAllPermissionsGranted = false
-                }
-            }
-            if (areAllPermissionsGranted) {
-                enableMyLocation()
-            } else {
-                createSnackbar()
-            }
-        }
-
+    override val requestPermissionLauncher: ActivityResultLauncher<Array<String>> =
+        createRequestPermissionLauncher({ enableMyLocation() }, { createSnackbar() })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +44,10 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
     ): View {
 
         binding = FragmentParkMapBinding.inflate(inflater, container, false)
+        binding.fragmentParkMapFab.setOnClickListener {
+            findNavController().navigate(ParkMapFragmentDirections.actionParkMapFragmentToAddRidingSpotFragment())
+        }
+
         mapView = binding.fragmentParkMapMapview
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
@@ -92,12 +74,7 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
         googleMap = map
 
         setObservers()
-
-        if (allPermissionsGranted()) {
-            enableMyLocation()
-        } else {
-            checkAndRequestPermissions()
-        }
+        handlePermissions()
 
         viewModel.getRidingSpots()
     }
@@ -135,24 +112,18 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
+    private fun handlePermissions(){
+        if (allPermissionsGranted()) {
+            enableMyLocation()
+        } else {
+            checkAndRequestPermissions()
+        }
+    }
+
+
     @SuppressLint("MissingPermission")
-    fun enableMyLocation() {
+    private fun enableMyLocation() {
         googleMap.isMyLocationEnabled = true
-    }
-
-    private fun checkAndRequestPermissions() {
-        if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(neededPermissions)
-        }
-    }
-
-    private fun allPermissionsGranted(): Boolean {
-        return neededPermissions.all {
-            ContextCompat.checkSelfPermission(
-                requireContext(),
-                it
-            ) == PackageManager.PERMISSION_GRANTED
-        }
     }
 
     private fun createSnackbar() {

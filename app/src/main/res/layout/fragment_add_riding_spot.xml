@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.parkmap.addridingspot.AddRidingSpotFragment">
+
+    <EditText
+        android:id="@+id/fragment_add_riding_spot_tv_title"
+        android:hint="@string/fragment_add_riding_spot_title_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment_add_riding_spot_tv_location"/>
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/fragment_add_riding_spot_tv_title"
+        app:layout_constraintBottom_toTopOf="@id/fragment_add_riding_spot_tv_description"
+        android:id="@+id/fragment_add_riding_spot_tv_location"
+        android:hint="@string/fragment_add_riding_spot_location_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/fragment_add_riding_spot_tv_location"
+        app:layout_constraintBottom_toTopOf="@id/fragment_add_riding_spot_map"
+        android:id="@+id/fragment_add_riding_spot_tv_description"
+        android:hint="@string/fragment_add_riding_spot_description_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.gms.maps.MapView
+        app:layout_constraintTop_toBottomOf="@id/fragment_add_riding_spot_tv_description"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_add_riding_spot_button_save"
+        android:id="@+id/fragment_add_riding_spot_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/fragment_add_riding_spot_button_save"
+        style="@style/ButtonDefaultStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_add_riding_spot_button_save_text"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,4 +18,9 @@
     <!-- Generic strings-->
     <string name="settings">Settings</string>
 
+    <string name="fragment_add_riding_spot_button_save_text">Save the spot</string>
+    <string name="fragment_add_riding_spot_title_hint">Name of the riding spot</string>
+    <string name="fragment_add_riding_spot_location_hint">Where is this riding spot?</string>
+    <string name="fragment_add_riding_spot_description_hint">Describe the spot in short</string>
+
 </resources>

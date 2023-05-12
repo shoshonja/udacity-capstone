@@ -11,6 +11,8 @@
 
     <dimen name="fragment_park_map_side_margin">@dimen/margin_large</dimen>
     <dimen name="fragment_park_map_recycler_height">250dp</dimen>
+    <dimen name="fragment_park_map_fab_margin">@dimen/margin_large</dimen>
+
 
     <dimen name="fragment_news_source_banner_height">120dp</dimen>
 

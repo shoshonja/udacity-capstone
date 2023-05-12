@@ -30,7 +30,11 @@
         android:id="@+id/parkMapFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.parkmap.ParkMapFragment"
         android:label="fragment_park_map"
-        tools:layout="@layout/fragment_park_map" />
+        tools:layout="@layout/fragment_park_map" >
+        <action
+            android:id="@+id/action_parkMapFragment_to_addRidingSpotFragment"
+            app:destination="@id/addRidingSpotFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsSourceFragment"
         android:name="com.bikes.greyp.udacitycapstoneproject.ui.news.source.NewsSourceFragment"
@@ -41,4 +45,9 @@
             app:destination="@id/newsFeedFragment">
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/addRidingSpotFragment"
+        android:name="com.bikes.greyp.udacitycapstoneproject.ui.parkmap.addridingspot.AddRidingSpotFragment"
+        android:label="fragment_add_riding_spot"
+        tools:layout="@layout/fragment_add_riding_spot" />
 </navigation>
