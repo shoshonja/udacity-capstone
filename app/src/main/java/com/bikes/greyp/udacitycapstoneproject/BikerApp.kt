@@ -5,6 +5,7 @@ import com.bikes.greyp.udacitycapstoneproject.data.database.RssDatabase
 import com.bikes.greyp.udacitycapstoneproject.data.repository.Repository
 import com.bikes.greyp.udacitycapstoneproject.data.repository.RssRepository
 import com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed.NewsFeedViewModel
+import com.bikes.greyp.udacitycapstoneproject.ui.parkmap.ParkMapViewModel
 import com.bikes.greyp.udacitycapstoneproject.usecases.CheckConnectionUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.GetFeedLocalUseCase
 import com.bikes.greyp.udacitycapstoneproject.usecases.GetFeedRemoteUseCase
@@ -23,6 +24,9 @@ class BikerApp : Application() {
         val viewModelModule = module {
             viewModel {
                 NewsFeedViewModel(get())
+            }
+            viewModel {
+                ParkMapViewModel()
             }
         }
 

@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.bikes.greyp.udacitycapstoneproject.R
 import com.bikes.greyp.udacitycapstoneproject.databinding.FragmentParkMapBinding
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ParkMapFragment : Fragment(), OnMapReadyCallback {
 
@@ -17,6 +21,8 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
 
     lateinit var binding: FragmentParkMapBinding
+
+    private val viewModel: ParkMapViewModel by viewModel()
 
 
     override fun onCreateView(
@@ -50,5 +56,22 @@ class ParkMapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
 
+        setObservers()
+        viewModel.getRidingSpots()
+    }
+
+    private fun setObservers() {
+        viewModel.ridingSpots.observe(viewLifecycleOwner, Observer { ridingSpotList ->
+            for (ridingSpot in ridingSpotList) {
+                googleMap.addMarker(
+                    MarkerOptions().position(
+                        LatLng(
+                            ridingSpot.latitude,
+                            ridingSpot.longitude
+                        )
+                    ).title(ridingSpot.title)
+                )
+            }
+        })
     }
 }
