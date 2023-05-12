@@ -31,8 +31,7 @@ class ParkMapFragment : BaseMapFragment() {
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
     private lateinit var adapter: ParkMapAdapter
-
-    lateinit var binding: FragmentParkMapBinding
+    private lateinit var binding: FragmentParkMapBinding
 
     private val viewModel: ParkMapViewModel by viewModel()
     override val requestPermissionLauncher: ActivityResultLauncher<Array<String>> =

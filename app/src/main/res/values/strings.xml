@@ -15,12 +15,14 @@
     <string name="fragment_park_map_title">List of riding spots. Click to show on map!</string>
     <string name="fragment_park_map_info_permission_denied_explanation">You need to grant location permission in order to add the riding spot.</string>
 
-    <!-- Generic strings-->
-    <string name="settings">Settings</string>
-
+    <!-- Add Riding Spot fragment-->
     <string name="fragment_add_riding_spot_button_save_text">Save the spot</string>
     <string name="fragment_add_riding_spot_title_hint">Name of the riding spot</string>
     <string name="fragment_add_riding_spot_location_hint">Where is this riding spot?</string>
     <string name="fragment_add_riding_spot_description_hint">Describe the spot in short</string>
+    <string name="fragment_add_riding_spot_error_invalid_input">You must have at least maps location and title to save riding spot</string>
+
+    <!-- Generic strings-->
+    <string name="settings">Settings</string>
 
 </resources>
