@@ -6,9 +6,16 @@
     <string name="fragment_welcome_button_maps_label">See the best bike parks!</string>
     <string name="fragment_welcome_info">Welcome to the Biker app! See what\'s new in the bike world or see where to ride next!</string>
 
+    <!-- News Source fragment-->
     <string name="fragment_news_source_button_pb">See what\'s new on Pinkbike</string>
     <string name="fragment_news_source_button_vt">See what\'s new on VitalMtb</string>
     <string name="fragment_news_source_error_connection">You need to be connected to the internet to view the news!</string>
+
+    <!-- Park Map fragment-->
     <string name="fragment_park_map_title">List of riding spots. Click to show on map!</string>
+    <string name="fragment_park_map_info_permission_denied_explanation">You need to grant location permission in order to add the riding spot.</string>
+
+    <!-- Generic strings-->
+    <string name="settings">Settings</string>
 
 </resources>
