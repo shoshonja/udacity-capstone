@@ -1,7 +1,7 @@
 package com.bikes.greyp.udacitycapstoneproject
 
 import android.app.Application
-import com.bikes.greyp.udacitycapstoneproject.data.database.RssDatabase
+import com.bikes.greyp.udacitycapstoneproject.data.database.LocalDatabase
 import com.bikes.greyp.udacitycapstoneproject.data.repository.Repository
 import com.bikes.greyp.udacitycapstoneproject.data.repository.RssRepository
 import com.bikes.greyp.udacitycapstoneproject.ui.news.newsfeed.NewsFeedViewModel
@@ -39,7 +39,7 @@ class BikerApp : Application() {
 
         val repositoryModule = module {
             single { RssRepository(get(), get(), get(), get(), get()) as Repository }
-            single { RssDatabase.getInstance(this@BikerApp).rssDao }
+            single { LocalDatabase.getInstance(this@BikerApp).rssDao }
         }
 
         val utilsModule = module {

@@ -5,26 +5,28 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.bikes.greyp.udacitycapstoneproject.data.models.PartialFeedItem
+import com.bikes.greyp.udacitycapstoneproject.data.models.RidingSpot
 
-@Database(entities = [PartialFeedItem::class], version = 1, exportSchema = false)
-abstract class RssDatabase : RoomDatabase() {
+@Database(entities = [PartialFeedItem::class, RidingSpot::class], version = 2, exportSchema = false)
+abstract class LocalDatabase : RoomDatabase() {
 
     abstract val rssDao: RssDao
+    abstract val ridingSpotDao: RidingSpotDao
 
     companion object {
 
         @Volatile
-        private var INSTANCE: RssDatabase? = null
+        private var INSTANCE: LocalDatabase? = null
 
-        fun getInstance(context: Application): RssDatabase {
+        fun getInstance(context: Application): LocalDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context,
-                        RssDatabase::class.java,
-                        "local_rss_feed_database"
+                        LocalDatabase::class.java,
+                        "local_bikerapp_database"
                     )
                         .fallbackToDestructiveMigration()
                         .build()
