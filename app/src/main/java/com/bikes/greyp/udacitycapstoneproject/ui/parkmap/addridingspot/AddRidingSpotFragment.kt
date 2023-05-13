@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,10 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
+private const val KEY_TITLE = "key_title"
+private const val KEY_DESCRIPTION = "key_description"
+private const val KEY_LOCATION = "key_location"
+
 class AddRidingSpotFragment : BaseMapFragment() {
 
     private lateinit var mapView: MapView
@@ -36,9 +41,6 @@ class AddRidingSpotFragment : BaseMapFragment() {
 
     override val requestPermissionLauncher: ActivityResultLauncher<Array<String>> =
         createRequestPermissionLauncher({ enableMyLocation() }, { createSnackbar() })
-
-
-    //TODO save instance state here
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +58,7 @@ class AddRidingSpotFragment : BaseMapFragment() {
         }
 
         viewModel.ridingSpotSaved.observe(viewLifecycleOwner, Observer { saved ->
-            if(saved){
+            if (saved) {
                 findNavController().popBackStack()
             }
         })
@@ -66,7 +68,7 @@ class AddRidingSpotFragment : BaseMapFragment() {
 
     private fun handleSaveButtonClick() {
         if (isRidingSpotDataValid())
-            with(binding){
+            with(binding) {
                 viewModel.saveRidingSpot(
                     fragmentAddRidingSpotTvTitle.text.toString(),
                     fragmentAddRidingSpotTvLocation.text.toString(),
@@ -107,6 +109,33 @@ class AddRidingSpotFragment : BaseMapFragment() {
         super.onDestroy()
         mapView.onDestroy()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        with(binding) {
+            outState.putString(KEY_TITLE, fragmentAddRidingSpotTvTitle.text.toString())
+            outState.putString(KEY_DESCRIPTION, fragmentAddRidingSpotTvDescription.text.toString())
+            outState.putString(KEY_LOCATION, fragmentAddRidingSpotTvLocation.text.toString())
+        }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState != null) {
+            with(binding) {
+                fragmentAddRidingSpotTvTitle.text =
+                    setEditableFromInstanceState(savedInstanceState.getString(KEY_TITLE, ""))
+                fragmentAddRidingSpotTvDescription.text =
+                    setEditableFromInstanceState(savedInstanceState.getString(KEY_DESCRIPTION, ""))
+                fragmentAddRidingSpotTvLocation.text =
+                    setEditableFromInstanceState(savedInstanceState.getString(KEY_LOCATION, ""))
+            }
+        }
+    }
+
+    private fun setEditableFromInstanceState(text: String): Editable =
+        Editable.Factory.getInstance().newEditable(text)
+
 
     private fun handlePermissions() {
         if (allPermissionsGranted()) {
