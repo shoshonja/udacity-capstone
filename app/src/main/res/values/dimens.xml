@@ -7,6 +7,8 @@
 
 
     <dimen name="fragment_welcome_side_margin">@dimen/margin_large</dimen>
+    <dimen name="fragment_welcome_cranks_size">50dp</dimen>
+
     <dimen name="fragment_news_feed_side_margin">@dimen/margin_large</dimen>
 
     <dimen name="fragment_park_map_side_margin">@dimen/margin_large</dimen>
